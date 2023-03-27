@@ -1,0 +1,205 @@
+<%- include('./partials/header'); -%>
+
+<div class="container">
+  <% if(files){ %> <% files.forEach(function(file,idx) { %>
+
+  <div class="window">
+    <a href="/pin/<%=file._id %>">
+      <img class="foto" src="image/<%=file.filename %>" />
+    </a>
+
+    <div class="hover-zone">
+      <div class="top-bar">
+        <p class="boards-show-karo" style="pointer-events: all">Profile ⌵</p>
+
+        <% if (user.saved.indexOf(file._id)!==-1) { %>
+          <form class="saves" action="/save/pin/<%=file._id %>">
+        <button  type="submit"
+          id="save" class="save-btn"
+          style="pointer-events: all; background-color: #5f5e5e; background: #5f5e5e"
+          href="/save/pin/<%=file._id %>">Saved</button>
+        </form>
+
+        <% } else{ %>
+          <form class="saves" action="/save/pin/<%=file._id %>">
+          
+        <button class="save-btn" style="pointer-events:all;" id="save" href="/save/pin/<%=file._id %>">Save</button>
+      </form>
+        <% } %>
+      </div>
+      <!-------------------->
+      <div class="bottom-bar">
+        <% if(image[idx].link){ %>
+        <div class="gayab">
+          <p>↗ <%=image[idx]?.link%></p>
+        </div>
+
+        <% } else { %>
+        <div class="gayab"></div>
+        <% } %>
+
+        <div class="radius-ico">
+          <a style="pointer-events: all;" title="Download image" href="/image/<%=file.filename%>" download="">
+          
+            <img
+              src="https://cdn4.iconfinder.com/data/icons/navigation-40/24/download-128.png"
+            />
+          </a>
+          <img
+            src="https://cdn3.iconfinder.com/data/icons/iconset-1-1/24/icon_set_outlinder-10-256.png"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="brd-menu">
+      <div class="search-board">
+        <p>Save</p>
+        <div class="search-b">
+          <form action="/search/board">
+            <input
+              type="text"
+              class="boardSearch"
+              name="board"
+              placeholder="Search for board"
+            />
+          </form>
+        </div>
+      </div>
+
+      <div class="boards-show board-shows">
+        <small>save to board</small>
+        <% if(boards.length===0){ %>
+        <P>No boards </P>
+        <% } else { %> <% boards.forEach(function(board){ %>
+        <a href="/board/<%=board._id%>">
+          <div class="board-card-info">
+            <div class="board-image">
+              <% if(board.files?.length !== 0) { %>
+  
+                <img src="/image/<%=board.images[0]%>" alt="" />
+      
+                <% } else { %>
+      
+                <div class="noimage"></div>
+                <% } %>
+            </div>
+            <div class="board-name">
+              <p style="color: #111"><%=board.name%></p>
+
+              <% if(board.files?.indexOf(file._id)===-1){ %>
+
+              <a class="bs-btn" href="/save/<%=file._id%>/board/<%=board.id%>"
+                >Save</a
+              >
+              <%} else { %>
+              <small style="display: block; color: #111"
+                >Already in board</small
+              >
+              <% } %>
+            </div>
+          </div>
+        </a>
+        <% }) %> <% } %>
+      </div>
+
+      <div style="pointer-events: all;" class="boards-show result-board-show">
+      
+      </div>
+    </div>
+
+  
+
+
+  </div>
+  <% }) %> <% } else { %>
+  <p>No files to show</p>
+  <% } %>
+</div>
+
+<script>
+  let boards = document.querySelectorAll(".boards-show-karo");
+  let boardMenu = document.querySelectorAll(".brd-menu");
+  let windo = document.querySelectorAll(".window");
+
+  for (let i = 0; i < boards.length; i++) {
+    let state = false;
+    function showBoard() {
+      if (state) {
+        windo[i].style.overflow = "hidden";
+        boardMenu[i].style.display = "none";
+        state = !state;
+      } else {
+        windo[i].style.overflow = "visible";
+        boardMenu[i].style.display = "flex";
+        state = !state;
+      }
+    } 
+
+    boards[i].addEventListener("click", showBoard);
+  }
+
+  document.querySelectorAll(".search-b input").forEach(function (el, idx) {
+    el.addEventListener("input", function () {
+      let query = document.querySelectorAll(".search-b input")[idx].value;
+      let parent = document.querySelectorAll(".board-shows")[idx];
+
+      let parent2 = document.querySelectorAll(".result-board-show")[idx];
+
+      if (query.length != 0) {
+        axios.get(`/search/board/${query}`).then(function (data) {
+          if (data.data.length !== 0) {
+            data.data.resultBoard.forEach(function (brd, idx) {
+              boardCrad = `  
+       <a style="pointer-events: all"  href="/board/${brd._id}"> 
+        <div class="board-card-info">
+          <div class="board-image">
+
+             <div class="noimage"></div>
+          </div>
+          <div class="board-name">
+            <p style="color: #111;">${brd.name}</p>
+
+  
+          </div>
+        </div>
+        
+      `;
+            });
+          } else {
+            boardCrad = `<small>save to board</small>`;
+          }
+
+          parent.style.visibility = "hidden";
+          parent2.style.visibility = `visible `;
+
+          parent2.innerHTML = "";
+
+          parent2.innerHTML += boardCrad;
+        });
+      } else {
+        parent.style.visibility = "visible";
+        parent2.style.visibility = "hidden";
+      }
+    });
+
+    document.querySelectorAll(".search-b input").forEach(function (el, idx) {
+      el.addEventListener("blur", function () {
+        let parent = document.querySelectorAll(".board-shows")[idx];
+
+        // let parent = document.querySelector('#boards-show')
+        let parent2 = document.querySelectorAll(".result-board-show")[idx];
+        parent.style.visibility = "visible";
+        parent2.style.visibility = "hidden";
+      });
+    });
+  });
+
+
+ 
+  
+</script>
+  
+
+
+<%- include('./partials/footer'); -%>

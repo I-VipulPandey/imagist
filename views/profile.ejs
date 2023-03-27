@@ -1,0 +1,273 @@
+<%- include('./partials/header'); -%>
+
+<div class="dpchange">
+  <div class="card">
+    <i class="ri-close-line closeModel"></i>
+    <p>choose image</p>
+    <form
+      action="/change/userdp/<%=user._id%>"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <input accept="image/*" class="select" type="file" name="dp" id="" /
+      required>
+      <input class="button" type="submit" value="Submit" />
+    </form>
+  </div>
+</div>
+
+<div class="main-profile-sec">
+  <div class="img profile-img">
+    <% if(user.dp){ %>
+    <img src="../images/dp/<%=user.dp%>" alt="" />
+
+    <% } else{ %>
+    <img src="https://cdn-icons-png.flaticon.com/512/3667/3667215.png" alt="" />
+    <% } %>
+  </div>
+  <p class="name"><%=user.name%></p>
+  <P class="username">@<%=user.username%></P>
+  <p class="email"><%=user.email%></p>
+</div>
+
+<div class="links">
+  <p data-link="1" class="active created link">created</p>
+  <p data-link="2" class="saved link">saved</p>
+  <p data-link="3" class="boardss link">Board</p>
+</div>
+
+<div class="container on created-con con-1">
+  <% if(user.files.length !==0){ %> 
+    <% files.forEach(function(file,idx) { %> <%
+       if (user.files.indexOf(file._id) !== -1) { %>
+
+  <div class="window">
+    <a href="/pin/<%=file._id %>">
+      <img class="foto" src="image/<%=file.filename %>" />
+    </a>
+
+    <div class="hover-zone">
+      <div class="top-bar">
+        <p>Profile ⌵</p>
+
+        <% if (user.saved.indexOf(file._id)!==-1) { %>
+          <form class="saves" action="/save/pin/<%=file._id %>">
+        <button  type="submit"
+          id="save" class="save-btn"
+          style="pointer-events: all; background-color: #5f5e5e; background: #5f5e5e"
+          href="/save/pin/<%=file._id %>">Saved</button>
+        </form>
+
+        <% } else{ %>
+          <form class="saves" action="/save/pin/<%=file._id %>">
+          
+        <button class="save-btn" style="pointer-events:all;" id="save" href="/save/pin/<%=file._id %>">Save</button>
+      </form>
+        <% } %>
+      </div>
+      <!-------------------->
+      <div class="bottom-bar">
+        
+       <% if(image[idx].link){ %>
+        <div class="gayab">
+
+          <p>↗ <%=image[idx]?.link%></p>
+        </div>
+
+       <% }  else { %>
+        <div class="gayab">
+
+        </div>
+      <% } %>
+        <div class="radius-ico">
+          <a style="pointer-events: all;" title="Download image" href="/image/<%=file.filename%>" download="">
+          
+            <img
+              src="https://cdn4.iconfinder.com/data/icons/navigation-40/24/download-128.png"
+            />
+          </a>
+          <img
+            src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-more-256.png"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <% } else{ %> <% } %> <% }) %> <% } else { %>
+  <p
+    style="
+      text-align: center;
+      top: 10vh;
+      left: 40vw;
+      position: relative;
+      font-size: 1.5vw;
+      width: 100%;
+    "
+  >
+    Created pins will show here...
+  </p>
+  <% } %>
+</div>
+
+<div class="container saved-con con-2">
+  <% if(user.saved.length !==0){ %> <% files.forEach(function(file,idx) { %> <%
+  if (user.saved.indexOf(file._id)!==-1) { %>
+
+  <div class="window">
+    <a href="/pin/<%=file._id %>">
+      <img class="foto" src="image/<%=file.filename %>" />
+    </a>
+
+    <div class="hover-zone">
+      <div class="top-bar">
+        <p>Profile ⌵</p>
+
+        <a
+
+          style="background-color: #5f5e5e; background: #5f5e5e"
+          href="/saves/pin/<%=file._id %>"
+          >Remove</a
+        >
+      </div>
+      <!-------------------->
+      <div class="bottom-bar">
+        <!-- <a>↗ website.com</a> -->
+        
+       <% if(image[idx].link){ %>
+        <div class="gayab">
+
+          <p>↗ <%=image[idx]?.link%></p>
+        </div>
+
+       <% }  else { %>
+        <div class="gayab">
+
+        </div>
+      <% } %>
+
+        <div class="radius-ico">
+          <a style="pointer-events: all;" title="Download image" href="/image/<%=file.filename%>" download="">
+          
+            <img
+              src="https://cdn4.iconfinder.com/data/icons/navigation-40/24/download-128.png"
+            />
+          </a>
+          <img
+            src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-more-256.png"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <% } else{ %> <% } %> <% }) %> <% } else { %>
+  <p
+    style="
+      text-align: center;
+      top: 10vh;
+      left: 40vw;
+      position: relative;
+      font-size: 1.5vw;
+      width: 100%;
+    "
+  >
+    Save pins to view here...
+  </p>
+  <% } %>
+</div>
+
+<!-- boards -->
+<div class="container boards-con con-3">
+  <% if(user.boards.length ===0){ %>
+  <p
+    style="
+      text-align: center;
+      top: 10vh;
+      left: 40vw;
+      position: relative;
+      font-size: 1.5vw;
+      width: 100%;
+    "
+  >
+    No boards to show...
+  </p>
+  <% } else { %> 
+    
+    <% user.boards.forEach(function(board,idx){ %>
+  <div class="board-items">
+    <a href="/board/<%=board._id%>">
+
+    <div class="img-cont">
+      <div class="img1">
+          <img src="/image/<%=board.images[0]%>" alt="" />
+      </div>
+      <div class="img2-3">
+        <div class="img2">
+          <img src="/image/<%=board.images[1]%>" alt="" />
+
+        </div>
+        <div class="img-3">
+          <img src="/image/<%=board.images[2]%>" alt="" />
+
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="txt-cont">
+      <p><%=board.name %></p>
+      <small><%=board.images.length%> pin/s in this board</small>
+    </div>
+  </a>
+
+  </div>
+  <% }) %> 
+  
+  <% } %>
+</div>
+
+<script>
+
+// link toggle and diggerent container display  
+
+  let links = document.querySelectorAll(".link");
+  let linksContainer = document.querySelector(".links");
+
+  let containers = document.querySelectorAll('.container')
+
+  linksContainer.addEventListener('click',function(e){
+
+    let clicked = e.target.closest('.link')
+
+    if(!clicked) return
+
+    links.forEach(function(link){
+      link.classList.remove('active')
+    })  
+
+    containers.forEach(function(cont){
+      cont.classList.remove('on')
+    })
+
+    clicked.classList.add('active')
+
+    document.querySelector(`.con-${clicked.dataset.link}`).classList.add('on')
+  })
+
+//  showing chnage dp modal on click
+
+  let profileImg = document.querySelector(".profile-img");
+  let closeModel = document.querySelector(".closeModel");
+
+  let model = document.querySelector(".dpchange");
+
+  profileImg.addEventListener("click", function () {
+    model.style.display = "flex";
+  });
+
+  closeModel.addEventListener("click", function () {
+    model.style.display = "none";
+  });
+
+</script>
+
+<%- include('./partials/footer'); -%>

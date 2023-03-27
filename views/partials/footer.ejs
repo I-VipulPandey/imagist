@@ -1,0 +1,85 @@
+
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.1/axios.min.js"
+  integrity="sha512-NbjaUHU8g0+Y8tMcRtIz0irSU3MjLlEdCvp82MqciVF4R2Ru/eaXHDjNSOvS6EfhRYbmQHuznp/ghbUvcC0NVw=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+
+<script>
+    let createBtn = document.querySelector(".create");
+    let menu = document.querySelector(".create-menu");
+  
+    let clicked = false;
+  
+    function showMenu() {
+      if (clicked) {
+        menu.style.display = "none";
+        clicked = !clicked;
+      } else {
+        menu.style.display = "flex";
+        clicked = !clicked;
+      }
+    }
+  
+    createBtn.addEventListener("click", showMenu);
+    menu.addEventListener("click", showMenu);
+  
+    let BoardModel = document.querySelector(".board-model");
+    let createBoardBtn = document.querySelector("#create-board");
+    let CloseBoard = document.querySelector(".closeModalBoard");
+  
+    createBoardBtn.addEventListener("click", function (e) {
+      BoardModel.style.display = "flex";
+
+    });
+
+    CloseBoard.addEventListener("click", function () {
+      BoardModel.style.display = "none";
+    });
+
+
+    let pinModel = document.querySelector(".add_pin_modal");
+    let createPinBtn = document.querySelector("#create-pin");
+    let ClosePin = document.querySelector(".closeModalPin");
+  
+    createPinBtn.addEventListener("click", function (e) {
+      pinModel.style.display = "block";
+    });
+  
+    ClosePin.addEventListener("click", function () {
+      pinModel.style.display = "none";
+    });
+
+    document.querySelectorAll('.saves').forEach(function(el,idx){
+el.addEventListener('click',function(e){
+  e.preventDefault();
+  let saveBtn = document.querySelectorAll('.save-btn')[idx]
+
+  let link = document.querySelectorAll('.saves')[idx].action;
+
+  axios.get(link).then(function(data){
+
+      if (data.data.user.saved.indexOf(data.data.files[idx]._id)!==-1) { 
+        saveBtn.textContent = 'Saved';
+        saveBtn.style.backgroundColor = '#5f5e5e'
+     }
+     else{
+      saveBtn.textContent = 'save';
+      saveBtn.style.backgroundColor = 'red'
+
+      
+     }
+     
+  })
+})
+  })
+  
+    
+  </script>
+
+
+</div>
+  
+</body>
+</html>

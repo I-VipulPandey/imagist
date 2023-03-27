@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+
+<style>
+   @font-face {
+        font-family: neurath;
+        src: url('../assets/NeurathTest-Regular-BF63e5b932534b2.otf');
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    html,
+    body {
+        height: 100%;
+        width: 100%;
+        font-family: neurath;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1vw;
+    }
+
+    .upper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 1vw;
+    }
+
+    .top {
+        display: flex;
+        align-items: center;
+        
+    }
+
+    .top img {
+        width: 3vw;
+    }
+
+    .top p {
+        position: relative;
+        top: .7vw;
+        font-weight: 800;
+        font-size: 2vw;
+        margin-left:  1vw;
+    }
+
+    .upper button,
+    .login button {
+        background-color: #fff;
+        border: 1px solid #111;
+        border-radius: 10px;
+        padding: .4vw 3vw;
+        display: flex;
+        align-items: center;
+        gap: 1vw;
+        width: 30vw;
+        justify-content: center;
+        text-transform: capitalize;
+    }
+
+    .lower input {
+        width: 30vw;
+    }
+
+    .lower form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        align-self: center;
+
+    }
+
+    .lower #forgotpass {
+        align-self: flex-start;
+    }
+
+    .lower form button {
+        width: 30vw;
+    }
+
+    .login {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        /* background-color: red; */
+        margin-bottom: 2vw;
+
+    }
+    .login a{
+        text-decoration: none;
+        color: #111;
+    }
+
+    #or::after {
+        content: "";
+        height: .2vh;
+        width: 13vw;
+        background-color: #9c9797;
+        position: absolute;
+        margin: 2vh;
+
+    }
+
+    #or::before {
+        content: "";
+        height: .2vh;
+        width: 13vw;
+        background-color: #9c9797;
+        position: absolute;
+        margin-left: -27vh;
+        margin-top: 2vh;
+
+    }
+</style>
+
+<body>
+
+    <div id="main">
+        <div class="container">
+            <div class="upper">
+                <div class="top">
+                    <img
+                    draggable="false"
+                    src="https://cdn1.iconfinder.com/data/icons/logotypes/32/pinterest-512.png"
+                  />
+                    <p>Sign up for free</p>
+
+                </div>
+                <a style="text-decoration: none; color: #111;" href="/login/federated/google"
+                ><button>
+                  <span><i class="ri-google-fill"></i></span> Continue with google
+                </button></a
+              >
+            </div>
+            <p id="or">or</p>
+            <div class="lower">
+                <form action="/register" method="post">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" placeholder="Your Email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Create a Password</label>
+                        <input type="password" placeholder="Choose password" name="password" class="form-control" id="exampleInputPassword1" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">What should we call you?</label>
+                        <input type="text" name="name" class="form-control" id="exampleInputPassword1"
+                            placeholder="Profile Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">How do we identify you?</label>
+                        <input type="text" name="username" class="form-control" id="exampleInputPassword1" placeholder="Username" required>
+                    </div>
+
+                    <div id="forgotpass" class="mb-3">
+                        <a href="">forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary">sign up</button>
+                </form>
+            </div>
+            <hr>
+            <div class="login">
+
+                <p>Have an account?</p>
+               <a href="/login"><button>Log in now</button></a> 
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

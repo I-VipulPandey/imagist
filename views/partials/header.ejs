@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../stylesheets/style.css" />
+    <title>Pintrest</title>
+  </head>
+
+  <body>
+    <div id="main">
+
+      <div class="menu">
+        <div class="logo">
+          <a href="/">
+            <img
+              draggable="false"
+              src="https://cdn1.iconfinder.com/data/icons/logotypes/32/pinterest-512.png"
+            />
+          </a>
+        </div>
+        <div class="features">
+          <a href="/" title="home" class="home">Home</a>
+          <div class="create-div">
+            <p title="create" class="create">
+              create <i class="ri-arrow-down-s-line"></i>
+            </p>
+            <p></p>
+            <div class="create-menu">
+              <p id="create-pin">Create Pin</p>
+              <p id="create-board">Create Board</p>
+            </div>
+          </div>
+        </div>
+<div id="search-bar">
+
+  <form id="search-fomr" action="/search/result">
+  <input id="one" type="text" class="search-bar" name="searched" placeholder="Search" />
+       <input id="searched" type="submit" value="Search" required>
+</form>
+</div>
+
+        <div class="icon-container">
+          <div
+            title="Notifications"
+            tabindex="1"
+            draggable="false"
+            class="model-icon icon bell"
+          >
+            <i class="ri-notification-2-fill"></i>
+          </div>
+
+          <div
+            title="Messages"
+            tabindex="1"
+            draggable="false"
+            class="model-icon icon message"
+          >
+            <i class="ri-message-3-fill"></i>
+          </div>
+
+          <div
+            title="Profile"
+            tabindex="1"
+            draggable="false"
+            class="model-icon icon pp"
+          >
+            <a href="/profile">
+              <% if(user.dp){ %>
+                <img src="../images/dp/<%=user.dp%>" alt="">
+          
+              <%  } else{ %>
+                <img src="https://cdn-icons-png.flaticon.com/512/3667/3667215.png" alt="">
+            <%  }  %>
+            </a>
+          </div>
+
+          <div
+            title="More"
+            tabindex="1"
+            draggable="false"
+            class="model-icon icon btn"
+          >
+            <i class="ri-arrow-down-s-line"></i>
+          </div>
+
+          <!-- --FOCUS--- -->
+          <div tabindex="1" class="focus-bar bell-bar">nothing</div>
+          <!-------------------->
+          <div tabindex="1" class="focus-bar message-bar">you are alone</div>
+          <!-------------------->
+          <div tabindex="1" class="focus-bar pp-bar">
+            <div class="profile-sec">
+              <div class="img profile-img-card">
+                <% if(user.dp){ %>
+                  <img src="../images/dp/<%=user.dp%>" alt="">
+            
+                <%  } else{ %>
+                  <img src="https://cdn-icons-png.flaticon.com/512/3667/3667215.png" alt="">
+              <%  }  %>
+              </div>
+              <p class="name-card"><%=user.name%></p>
+              <P class="username-card">@<%=user.username%></P>
+              <a id="logout" href="/logout">Logout</a>
+            </div>
+          </div>
+          <!-------------------->
+          <div tabindex="1" class="focus-bar btn-bar"></div>
+        </div>
+      </div>
+
+      
+
+    <!-- board modals -->
+
+    <div class="board-model">
+      <div class="board-card">
+        <i class="ri-close-line closeModalBoard"></i>
+
+        <div class="upper-board">
+          <p>Create Board</p>
+        </div>
+        <div class="lower-board">
+          <form action="/create/board" method="post">
+            <input type="text" name="name" placeholder="Board Name" required />
+            <button type="submit">Create</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- pin model -->
+
+    <form action="/createpin" method="post" enctype="multipart/form-data">
+      <div class="add_pin_modal">
+        <div class="add_pin_container">
+          <i class="ri-close-line closeModalPin"></i>
+          <div class="side" id="left_side">
+            <div class="section1"></div>
+            <div class="section2">
+              <label for="upload_img" id="upload_img_label">
+                <div class="upload_img_container">
+                  <img id="uploadPreview" src="" alt="" />
+                  <div id="dotted_border">
+                    <div>Click to upload</div>
+                    <div>
+                      Recommendation: Use high-quality .jpg files less than 20MB
+                    </div>
+                  </div>
+                </div>
+                <input
+                  onchange="PreviewImage()"
+                  accept="image/*"
+                  type="file"
+                  name="file"
+                  id="upload_img"
+                  required
+                />
+              </label>
+
+              <div class="modals_pin">
+                <div class="pin_image"></div>
+              </div>
+            </div>
+
+            <div class="section3">
+              <div class="save_from_site">
+                <span style="pointer-events: none">Save From Site</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="side" id="right_side">
+            <div class="section1">
+              <div class="select_size">
+                <select name="pin_size" id="pin_size">
+                  <option value="" disabled selected>Select</option>
+                  <option value="small">small</option>
+                  <option value="medium">medium</option>
+                  <option value="large">large</option>
+                </select>
+                <div class="save_pin">
+                  <button type="submit">Create</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="section2">
+              <input
+                placeholder="Add your title"
+                name="title"
+                type="text"
+                class="new_pin_input"
+                id="pin_title"
+              />
+              <input
+                placeholder="Tell everyone what your Pin is about"
+                type="text"
+                name="desc"
+                class="new_pin_input"
+                id="pin_description"
+              />
+              <input
+                placeholder="Add a destination link"
+                name="link"
+                type="text"
+                class="new_pin_input"
+                id="pin_destination"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+
+
+    
+    
+    
+
+    <script>
+      function PreviewImage() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("upload_img").files[0]);
+
+        oFReader.onload = function (oFREvent) {
+          document.getElementById("uploadPreview").src = oFREvent.target.result;
+          document.getElementById("uploadPreview").style.display = "initial";
+        };
+      }
+
+      
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,225 @@
+<%- include('./partials/header'); -%> <% if(files){ %>
+
+
+<div class="pin-cont">
+  <% files.forEach(function(file,idx){ %>
+
+    <div class="boards-info">
+      <div class="search-board">
+        <p>Save</p>
+        <div class="search-b">
+          <form action="">
+            <input type="text" name="board" placeholder="Search for board" />
+          </form>
+        </div>
+      </div>    
+  
+      <div class="boards-show">
+          <small>save to board</small>
+          <% if(user.boards.length===0){ %>
+              <P>No boards </P>
+            <% } else { %> <% user.boards.forEach(function(board){ %>
+               <div class="board-card-info">
+
+              
+
+                <a href="/board/<%=board._id%>"><div class="board-image">
+            <% if(board.files?.length !== 0) { %>
+  
+            <img src="/image/<%=board.images[0]%>" alt="" />
+  
+            <% } else { %>
+  
+            <div class="noimage"></div>
+            <% } %>
+          </div>
+        </a>
+
+
+          <div class="board-name">
+            <p><%=board.name%></p>
+            <% if(board.files?.indexOf(file._id)===-1){ %>
+  
+            <a href="/save/<%=file._id%>/board/<%=board.id%>">Save</a>
+            <%} else { %>
+            <small>Already in board</small>
+            <% } %>
+          </div>
+
+        </div>
+        <% }) %> <% } %>
+      </div>
+  
+      </div>
+
+  <div class="pin-card">
+    <div class="left">
+      <img src="/image/<%=file.filename%>" alt="" />
+      <div class="link">↗ <%=imageData?.link%></div>
+    </div>
+
+    <div class="right">
+      <div class="top">
+        <div class="radius-ico">
+          <a title="Download image" href="/image/<%=file.filename%>" download=""><img
+            src="https://cdn4.iconfinder.com/data/icons/navigation-40/24/download-128.png"
+          /></a>
+          <img
+            src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-more-256.png"
+          />
+          <% if (user.files.indexOf(file._id)!==-1) { %>
+
+          <a class="delete-pin" href="/delete/pin/<%=file._id%>">Delete Pin</a>
+          <% } %>
+        </div>
+
+        <div class="save-opt">
+
+          <%if(user.boards[idx].files.indexOf(file._id)!== -1){%>
+
+            <button class="saveboard"><%=user.boards[idx].name%> <i class="ri-arrow-down-s-line"></i>
+              <% } else{ %>
+                <button class="saveboard">Save to board <i class="ri-arrow-down-s-line"></i>
+            
+         <% }  %>
+      
+    </button>
+    
+
+          <% if (user.saved.indexOf(file._id)!==-1) { %>
+
+          <a
+            class="save"
+            style="text-decoration: none;
+            color: #ffffff;
+            padding: .5vw 1vw;
+            background-color: #858383;
+            border-radius: 20px;";
+            href="/saves/pin/<%=file._id %>"
+            >Saved</a
+          >
+
+          <% } else{ %>
+
+          <a class="save" style="text-decoration: none;
+          color: #ffffff;
+          padding: .5vw 1vw;
+          background-color: red;
+          border-radius: 20px;" href="/saves/pin/<%=file._id %>">Save</a>
+          <% } %>
+        </div>
+      </div>
+
+      <div class="middle">
+        <h2><%=imageData?.title%></h2>
+
+        <p><%=imageData?.desc%></p>
+      </div>
+
+      <div class="profile-sec">
+        <div class="dp">
+          <% if(user.dp){ %>
+          <img src="../images/dp/<%=user.dp%>" alt="" />
+
+          <% } else{ %>
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3667/3667215.png"
+            alt=""
+          />
+          <% } %>
+        </div>
+        <p><%=user.username%> - <%=user.email%></p>
+      </div>
+
+      <div class="comments">
+        <h4>Comments</h4>
+        <form class="comment-form" action="/comment/<%=imageData._id %>">
+          <div class="comment-box">
+            <input
+              type="text"
+              name="comment"
+              class="form-control"
+              id="formGroupExampleInput"
+              placeholder="Enter Comment"
+              required
+            />
+
+            <button class="cmnt-btn" type="submit">
+              Add comment <i class="ri-chat-1-fill"></i>
+            </button>
+          </div>
+        </form>
+        <p>Recent comments</p>
+
+        <% if(imageData.comments?.length !== 0){ %>
+
+        <div class="recent-cmnt">
+          <% imageData.comments?.forEach(function(cmnt,idx){ %>
+
+          <div id="cmnt-cont">
+            <div id="cmnt">
+              <small><%=cmnt.comment %></small>
+            </div>
+            <div id="time-auth">
+              <small id="auth">~by <%=cmnt.author%> </small>
+              <small id="time">
+                <%= cmnt.date %>
+                <a href="/delete/comment/<%=imageData._id%>/<%=idx%>">
+                  <% if(cmnt.author === user.username){ %>
+                  <i class="ri-delete-bin-7-line"></i>
+                  <% } %>
+                </a>
+              </small>
+            </div>
+          </div>
+
+          <% }) %>
+        </div>
+        <% } else { %>
+        <div class="no-cmnt">
+          <small>No comments yet!</small>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+
+  <% }) %>
+</div>
+
+<% } else { %>
+  <p>cannot find pin</p>
+  <% } %>
+
+<script>
+  // board info modal
+    
+  let boardsCont = document.querySelector(".boards-info");
+  let boardsBtn = document.querySelectorAll(".saveboard");
+
+  let clickedB = false;
+
+  function showCont(el) {
+    if (clickedB) {
+      boardsCont.style.display = "none";
+
+      clickedB = !clickedB;
+    } else {
+      boardsCont.style.display = "flex";
+      clickedB = !clickedB;
+
+     
+    }
+
+  }
+  boardsBtn.forEach(function(board){
+    
+    board.addEventListener("click", showCont);
+   
+  })
+
+ 
+
+</script>
+
+<%- include('./partials/footer'); -%>
