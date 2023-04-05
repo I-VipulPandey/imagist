@@ -29,11 +29,10 @@ const { findByIdAndDelete, findOneAndDelete } = require('./users');
 
 passport.use(new localStrategy(userModel.authenticate()));
 
-
-const mongouri = 'mongodb://0.0.0.0:27017/pintrest';
+const mongouri = process.env['MONGO_URI']
 
 try {
-  mongoose.connect('mongodb://localhost/pintrest', {
+  mongoose.connect(mongouri, {
     useUnifiedTopology: true,
     useNewUrlParser: true
   });

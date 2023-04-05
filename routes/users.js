@@ -5,7 +5,7 @@ var router = express.Router();
 var plm = require('passport-local-mongoose');
 
 
-mongoose.connect('mongodb://localhost/pintrest').then(function () {
+mongoose.connect(process.env['MONGO_URI']).then(function () {
   console.log('connected to mongo')
 })
 

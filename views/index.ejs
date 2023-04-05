@@ -13,18 +13,33 @@
         <p class="boards-show-karo" style="pointer-events: all">Profile ⌵</p>
 
         <% if (user.saved.indexOf(file._id)!==-1) { %>
-          <form class="saves" action="/save/pin/<%=file._id %>">
-        <button  type="submit"
-          id="save" class="save-btn"
-          style="pointer-events: all; background-color: #5f5e5e; background: #5f5e5e"
-          href="/save/pin/<%=file._id %>">Saved</button>
+        <form class="saves" action="/save/pin/<%=file._id %>">
+          <button
+            type="submit"
+            id="save"
+            class="save-btn"
+            style="
+              pointer-events: all;
+              background-color: #5f5e5e;
+              background: #5f5e5e;
+            "
+            href="/save/pin/<%=file._id %>"
+          >
+            Saved
+          </button>
         </form>
 
         <% } else{ %>
-          <form class="saves" action="/save/pin/<%=file._id %>">
-          
-        <button class="save-btn" style="pointer-events:all;" id="save" href="/save/pin/<%=file._id %>">Save</button>
-      </form>
+        <form class="saves" action="/save/pin/<%=file._id %>">
+          <button
+            class="save-btn"
+            style="pointer-events: all"
+            id="save"
+            href="/save/pin/<%=file._id %>"
+          >
+            Save
+          </button>
+        </form>
         <% } %>
       </div>
       <!-------------------->
@@ -39,8 +54,12 @@
         <% } %>
 
         <div class="radius-ico">
-          <a style="pointer-events: all;" title="Download image" href="/image/<%=file.filename%>" download="">
-          
+          <a
+            style="pointer-events: all"
+            title="Download image"
+            href="/image/<%=file.filename%>"
+            download=""
+          >
             <img
               src="https://cdn4.iconfinder.com/data/icons/navigation-40/24/download-128.png"
             />
@@ -76,13 +95,13 @@
           <div class="board-card-info">
             <div class="board-image">
               <% if(board.files?.length !== 0) { %>
-  
-                <img src="/image/<%=board.images[0]%>" alt="" />
-      
-                <% } else { %>
-      
-                <div class="noimage"></div>
-                <% } %>
+
+              <img src="/image/<%=board.images[0]%>" alt="" />
+
+              <% } else { %>
+
+              <div class="noimage"></div>
+              <% } %>
             </div>
             <div class="board-name">
               <p style="color: #111"><%=board.name%></p>
@@ -103,14 +122,11 @@
         <% }) %> <% } %>
       </div>
 
-      <div style="pointer-events: all;" class="boards-show result-board-show">
-      
-      </div>
+      <div
+        style="pointer-events: all"
+        class="boards-show result-board-show"
+      ></div>
     </div>
-
-  
-
-
   </div>
   <% }) %> <% } else { %>
   <p>No files to show</p>
@@ -121,7 +137,6 @@
   let boards = document.querySelectorAll(".boards-show-karo");
   let boardMenu = document.querySelectorAll(".brd-menu");
   let windo = document.querySelectorAll(".window");
-
   for (let i = 0; i < boards.length; i++) {
     let state = false;
     function showBoard() {
@@ -130,14 +145,30 @@
         boardMenu[i].style.display = "none";
         state = !state;
       } else {
+
         windo[i].style.overflow = "visible";
         boardMenu[i].style.display = "flex";
         state = !state;
-      }
-    } 
 
-    boards[i].addEventListener("click", showBoard);
+      }
+    }
+
+
+  boards[i].addEventListener("click", showBoard);
   }
+
+  document.addEventListener("click", function (e) {
+    let targetted = e.target.closest(".boards-show-karo");
+
+    if (!targetted) {
+      let boardMenu = document.querySelectorAll(".brd-menu");
+      boardMenu.forEach(function (el, idx) {
+        el.style.display = "none";
+        windo[idx].style.overflow = "hidden";
+
+      });
+    }
+  });
 
   document.querySelectorAll(".search-b input").forEach(function (el, idx) {
     el.addEventListener("input", function () {
@@ -194,12 +225,6 @@
       });
     });
   });
-
-
- 
-  
 </script>
-  
-
 
 <%- include('./partials/footer'); -%>
