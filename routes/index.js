@@ -562,8 +562,6 @@ passport.use(new GoogleStrategy({
     newUser.name = profile.displayName;
   newUser.email = profile.emails[0].value;
   newUser.username = profile.emails[0].value.split('@')[0];
-
-  
     let result = await newUser.save()
 
 
