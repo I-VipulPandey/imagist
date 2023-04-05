@@ -75,9 +75,9 @@
 
         <div class="save-opt">
 
-          <%if(user.boards[idx].files.indexOf(file._id)!== -1){%>
+          <%if(user.boards[idx]?.files.indexOf(file._id)!== -1){%>
 
-            <button class="saveboard"><%=user.boards[idx].name%> <i class="ri-arrow-down-s-line"></i>
+            <button class="saveboard"><%=user.boards[idx]?.name%> <i class="ri-arrow-down-s-line"></i>
               <% } else{ %>
                 <button class="saveboard">Save to board <i class="ri-arrow-down-s-line"></i>
             
@@ -86,7 +86,7 @@
     </button>
     
 
-          <% if (user.saved.indexOf(file._id)!==-1) { %>
+          <% if (user.saved?.indexOf(file._id)!==-1) { %>
 
           <a
             class="save"
