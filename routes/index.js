@@ -16,20 +16,23 @@ var GoogleStrategy = require('passport-google-oidc');
 require('dotenv').config();
 
 
-const users = require('./users');
-var userModel = require('./users')
-let imageModel = require('./image')
-let boardModel = require('./board')
+const users = require('../models/users');
+var userModel = require('../models/users')
+let imageModel = require('../models/image')
+let boardModel = require('../models/board')
 
 const passport = require('passport');
 
 
 const localStrategy = require('passport-local');
-const { findByIdAndDelete, findOneAndDelete } = require('./users');
+
+const { findByIdAndDelete, findOneAndDelete } = require('../models/users');
 
 passport.use(new localStrategy(userModel.authenticate()));
 
 const mongouri = process.env['MONGO_URI']
+
+
 
 try {
   mongoose.connect(mongouri, {
@@ -92,7 +95,6 @@ function fileFilter(req, file, cb) {
 const upload = multer({
   storage, fileFilter
 });
-
 
 
 /* GET home page. */
