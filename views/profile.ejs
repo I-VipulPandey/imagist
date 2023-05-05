@@ -19,7 +19,7 @@
 <div class="main-profile-sec">
   <div class="img profile-img">
     <% if(user.dp){ %>
-    <img src="../images/dp/<%=user.dp%>" alt="" />
+    <img loading="lazy" src="../images/dp/<%=user.dp%>" alt="" />
 
     <% } else{ %>
     <img src="https://cdn-icons-png.flaticon.com/512/3667/3667215.png" alt="" />
@@ -115,7 +115,7 @@
 
   <div class="window">
     <a href="/pin/<%=file._id %>">
-      <img class="foto" src="image/<%=file.filename %>" />
+      <img loading="lazy" class="foto" src="image/<%=file.filename %>" />
     </a>
 
     <div class="hover-zone">
