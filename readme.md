@@ -1,8 +1,6 @@
 <h1 align="center">Imagist - A Pinterest Clone</h1>
 
-<p align="center">
-  <img src="https://i.imgur.com/rwtPdKj.png" alt="Imagist screenshot">
-</p>
+
 
 <p align="center">
   Imagist is a clone of Pinterest that allows users to create an account, sign in with Google, create pins, save pins, delete their pins, comment on pins, create boards, save pins to boards, search for pins, change their profile picture, and download pins. It is built using EJS as frontend CSS for styling and Node.js as the backend. Pins are stored using GridFS in a MongoDB database and are directly fetched from the database.
@@ -32,11 +30,9 @@ git clone https://github.com/your-username/imagist.git
 
 Create a file named `.env` in the root directory of the project and add the following variables:
 
-PORT=3000
 MONGO_URI=<your-mongodb-uri>
 GOOGLE_CLIENT_ID=<your-google-client-id>
 GOOGLE_CLIENT_SECRET=<your-google-client-secret>
-SESSION_SECRET=<your-session-secret>
 
 Replace `<your-mongodb-uri>`, `<your-google-client-id>`, `<your-google-client-secret>`, and `<your-session-secret>` with your own values.
 
