@@ -21,9 +21,8 @@
             <% } else { %> <% user.boards.forEach(function(board){ %>
                <div class="board-card-info">
 
-              
-
-                <a href="/board/<%=board._id%>"><div class="board-image">
+                <a href="/board/<%=board._id%>">
+                  <div class="board-image">
             <% if(board.files?.length !== 0) { %>
   
             <img loading="lazy" src="/image/<%=board.images[0]%>" alt="" />
@@ -75,9 +74,16 @@
 
         <div class="save-opt">
 
-          <%if(user.boards[idx]?.files.indexOf(file._id)!== -1){%>
+          <%if(user.boards.length!==0){%>
 
-            <button class="saveboard"><%=user.boards[idx]?.name%> <i class="ri-arrow-down-s-line"></i>
+              <%if(user.boards[idx]?.files?.indexOf(file._id)!== -1){%>
+
+                <button class="saveboard"><%=user.boards[idx]?.name%> <i class="ri-arrow-down-s-line"></i>
+                  <% } else{  %>
+                <button class="saveboard">Save to board <i class="ri-arrow-down-s-line"></i>
+
+         <% }  %>
+
               <% } else{ %>
                 <button class="saveboard">Save to board <i class="ri-arrow-down-s-line"></i>
             

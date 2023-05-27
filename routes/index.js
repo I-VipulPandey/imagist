@@ -324,7 +324,6 @@ router.get('/pin/:fileid', isLoggedIn, async function (req, res, next) {
   const cursor = bucket.find({ _id: fileid });
   const files = await cursor.toArray();
 
-
   res.render('pin', { user, imageData, files });
 });
 
