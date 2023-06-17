@@ -1,0 +1,158 @@
+
+@font-face {
+  font-family: neurath;
+  src: url("../assets/NeurathTest-Regular-BF63e5b932534b2.otf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: neurath;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+}
+
+.upper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1vw;
+  margin-top: 5vh;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+}
+
+.top img {
+  width: 2vw;
+}
+
+.top p {
+  position: relative;
+  top: 0.7vw;
+  margin-left: 1vw;
+  font-size: 1.5vw;
+  font-weight: 800;
+}
+
+.upper button,
+.signup button {
+  background-color: #fff;
+  border: 1px solid #111;
+  border-radius: 10px;
+  padding: 0.4vw 3vw;
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  width: 30vw;
+  justify-content: center;
+  text-transform: capitalize;
+}
+
+.lower input {
+  width: 30vw;
+}
+
+.lower form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  align-self: center;
+}
+
+.lower #forgotpass {
+  align-self: flex-start;
+}
+
+.lower form button {
+  width: 30vw;
+}
+
+.signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* background-color: red; */
+}
+
+.signup a {
+  text-decoration: none;
+  color: #111;
+}
+
+#or::after {
+  content: "";
+  height: 0.2vh;
+  width: 13vw;
+  background-color: #9c9797;
+  position: absolute;
+  margin: 2vh;
+}
+
+#or::before {
+  content: "";
+  height: 0.2vh;
+  width: 13vw;
+  background-color: #9c9797;
+  position: absolute;
+  margin-left: -27vh;
+  margin-top: 2vh;
+}
+
+
+@media only screen and (max-width: 500px) {
+
+    .top{
+        gap: 3vw    ;
+    }
+    
+    .top img{
+        width: 10vw;
+    }
+
+    .top p{
+        font-size: 6.5vw;
+    }
+
+    .upper button, .signup button{
+        width: 75vw;
+    }
+
+
+    #or::after {
+        width: 25vw;
+      }
+      
+      #or::before {
+        width: 25vw;
+        margin-left: -16vh;
+      }
+
+      .lower input{
+        width: 75vw;
+      }
+
+
+      .lower form button{
+        width: 75vw;
+      }
+
+}

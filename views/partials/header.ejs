@@ -10,11 +10,21 @@
     />
     <link rel="shortcut icon" href="https://cdn1.iconfinder.com/data/icons/logotypes/32/pinterest-512.png" type="image/x-icon">
     <link rel="stylesheet" href="../stylesheets/style.css" />
+    <link rel="stylesheet" href="../stylesheets/responsive.css" />
+
     <title>Imagist</title>
   </head>
 
   <body>
     <div id="main">
+
+      <div id="search-bar-mobile">
+
+        <form id="search-form" action="/search/result">
+        <input id="one" type="text" class="search-bar" name="searched" placeholder="Search" />
+             <input id="searched" type="submit" value="Search" required>
+      </form>
+      </div>
 
       <div class="menu">
         <div class="logo">
@@ -40,11 +50,18 @@
         </div>
 <div id="search-bar">
 
-  <form id="search-fomr" action="/search/result">
+  <form id="search-form" action="/search/result">
   <input id="one" type="text" class="search-bar" name="searched" placeholder="Search" />
        <input id="searched" type="submit" value="Search" required>
 </form>
 </div>
+
+<div id="search-bar-icon-m">
+
+  <img src="https://cdn4.iconfinder.com/data/icons/music-ui-solid-24px/24/search-3-256.png" alt="search">
+  
+</div>
+
 
         <div class="icon-container">
           <div
@@ -236,6 +253,23 @@
         };
       }
 
+      let searchIcon = document.querySelector('#search-bar-icon-m')
+      let searchArea = document.querySelector('#search-bar-mobile')
+
+      let opened = false;
+
+      searchIcon.addEventListener('click',function(){
+        if(opened){
+
+          searchArea.style.display = 'none'
+          opened = !opened;
+        }
+        else{
+          searchArea.style.display = 'block'
+          opened = !opened;
+
+        }
+      })
       
     </script>
 

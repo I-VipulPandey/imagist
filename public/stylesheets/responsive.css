@@ -1,0 +1,448 @@
+@media only screen and (max-width: 500px) {
+
+   
+    .container{
+        column-count: 2;
+        padding: 1.5vw;
+        margin-top: 1vh;
+    }
+
+    .window{
+        margin: 0;
+        width: 48vw;
+    }
+
+    .menu{
+        width: 100vw !important;
+        position: absolute;
+        bottom: 0;
+        background-color: #fff;
+        position: fixed;
+        justify-content: space-evenly;
+    }
+
+    .menu .logo{
+        display: none;
+    }
+
+    .logo img{
+        display: none;
+    }
+    .menu #search-bar .search-bar{
+        display: none;
+    }
+
+    .menu #search-bar{
+        display: none;
+    }
+
+    .menu #search-bar-icon-m{
+        display: flex;
+        align-items: center;
+    }
+
+    .menu #search-bar-icon-m img{
+        height: auto;
+        width: 5vw;
+    }
+
+    .features{
+        gap: 6vw;
+    }
+
+    .search-bar-mobile{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 50vh;
+        width: 100vw;
+    }
+
+    .bell,.message,.btn{
+        display: none !important;
+    }
+
+    .pp{
+        height: 5vw !important;
+        width: 5vw !important;
+    }
+
+    .focus-bar{
+        display: none !important;
+    }
+
+    .create-menu{
+        top: -19vw;
+        padding: 2.5vw;
+    }
+
+    .create-menu p{
+        font-size: 4.5vw;
+    }
+
+    .board-model{
+        position: fixed;
+    }
+
+    .add_pin_modal{
+        position: fixed;
+    }
+
+    .board-card{
+        height: 20vh;
+        width: 70vw;
+    }
+
+    .closeModalBoard{
+        font-size: 6vw;
+    }
+
+    .upper-board{
+        font-size: 5vw;
+    }
+
+    .lower-board form input{
+        width: 63vw;
+        padding: 1.5vw 2.5vw;
+    }
+
+    .lower-board form button{
+        width: 63vw;
+    }
+
+    .add_pin_container{
+        width: 100vw;
+        flex-direction: column;
+        padding: 0 !important;
+        border-radius: none;
+    }
+
+    .side{
+        width: 100vw;
+    }
+
+    .closeModalPin{
+        font-size: 8vw !important;
+    }
+
+    .section1{
+        height: initial;
+    }
+
+    .main-profile-sec{
+        gap: 3vw;
+        padding: 5vw 1vw;
+    }
+
+    .links{
+        font-size: 4.5vw;
+        gap: 5vw;
+    }
+
+    .main-profile-sec .profile-img{
+        height: 15vw;
+        width: 15vw;
+    }
+
+    .main-profile-sec .name{
+        font-size: 5vw;
+        font-weight: 800;
+    }
+
+    .main-profile-sec .username{
+        font-size: 4vw;
+    }
+
+    .main-profile-sec .email{
+        font-size: 4vw;
+    }
+
+    #logout{
+        font-size: 5vw;
+        padding: 1vw 3vw;
+    }
+
+    .saved-con p,.boards-con p{
+        font-size: 5vw !important;
+        left: 25vw !important;
+    }
+
+    .menu #search-bar .search-bar, #search-bar-mobile form .search-bar{
+        font-size: 7vw;
+        background-size: 7vw;
+        padding: 1vw 9.50vw;
+    }
+
+    .menu #search-bar form #searched, #search-bar-mobile form #searched{
+        font-size: 5vw;
+        width: 21vw;
+    }
+
+    #search-bar-mobile{
+        position: fixed;
+        display: none;
+    }
+
+    /* search result */
+
+    .title{
+        padding: 5vw 2vw;
+        text-align: center;
+    }
+
+    .title p{
+        text-align: center;
+        font-size: 6vw;
+    }
+
+    /* pin page */
+    .pin-cont .pin-card{
+        flex-direction: column;
+        width: 100vw;
+        max-height: max-content !important;
+        gap: 5vw;
+        padding-bottom: 15vw;
+        
+    }
+
+    .pin-card .left{
+        width: 100%;
+        max-height: max-content !important;
+    }
+
+    .pin-card .right{
+        width: 100%;
+        padding: 1vw 3vw;
+    }
+
+    .pin-card .right .top{
+        flex-direction: column;
+    }
+
+    .pin-card .right .top .radius-ico{
+        align-self: flex-start;
+    }
+
+    .pin-card .right .top .radius-ico img{
+        height: 10vw;
+        width: 10vw;
+    }
+
+    .delete-pin{
+        font-size: 5vw !important;
+        padding: 1vw 3vw;
+    }
+
+    .pin-card .right .top .save-opt{
+        position: absolute;
+        top: 0;
+        position: fixed;
+        width: 100vw;
+        background-color: #fff;
+        padding: 2vw 3vw;
+    }
+
+    .pin-card .right .top .save-opt .saveboard{
+        font-size: 5vw;
+    }
+
+    .pin-card .right .top .save-opt .saveboard i{
+        font-size: 6vw;
+    }
+
+    .save-opt{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .save-opt .save{
+        padding: 1vw 3vw !important;
+        font-size: 5vw !important;
+    }
+
+    .pin-card .right .middle h2{
+        font-size: 12vw;
+    }
+
+    .pin-card .right .middle p{
+        font-size: 8vw;
+    }
+
+    .pin-card .profile-sec{
+        gap: 5vw;
+    }
+
+    .pin-card .profile-sec .dp{
+        height: 10vw;
+        width: 10vw;
+    }
+
+    .pin-card .comments{
+        gap: 5vw;
+        font-size: 5vw;
+    }
+
+    .pin-card .comments .comment-box{
+        width: 90vw !important;
+        flex-direction: column;
+        gap: 2vw;
+    }
+
+    .pin-card .comments .comment-box input{
+        font-size: 5vw;
+        width: 90vw !important;
+        padding: 1vw 3vw;
+    }
+
+    .pin-card .comments .comment-box .cmnt-btn{
+font-size: 5vw;
+padding: 1vw 5vw;
+    }
+
+    .pin-card .no-cmnt small{
+        padding: 1vw 3vw;
+    }
+
+    .pin-card .recent-cmnt #cmnt-cont{
+        width: 90vw;
+        padding: 1vw 2vw;
+        gap: 3vw;
+    }
+
+    .pin-card .recent-cmnt #cmnt-cont #cmnt{
+        font-size: 5vw;
+    }
+
+    .pin-card .recent-cmnt #cmnt-cont #time-auth #auth{
+        font-size: 3vw;
+    }
+
+    .pin-card .recent-cmnt #cmnt-cont #time-auth #time{
+        font-size: 3vw;
+    }
+
+
+    /* board */
+
+    .boards-con{
+        column-count: 1;
+        gap: 5vw;
+        padding-bottom: 15vw;
+    }
+
+    .boards-con .board-items .img-cont{
+        width: 98vw;
+        height: 50vh;
+        margin-top: 5vh;
+    }
+
+    .boards-con .board-items .txt-cont p{
+        font-size: 5vw !important;
+    }
+
+    .boards-con .board-items .txt-cont small{
+        font-size: 4.5vw;
+    }
+
+    .upper{
+        margin-top: 5vh;
+    }
+
+    .upper p{
+        font-size: 5vw;
+    }
+
+    .upper h2{
+        font-size: 7vw !important;
+    }
+
+    .teen-box{
+        gap: 2vw;
+        margin-bottom: 4vh;
+    }
+
+    .teen-box .box{
+        height: 12vw;
+        width: 12vw;
+    }
+
+    .teen-box .box i{
+        font-size: 6vw;
+    }
+
+    .teen-box .box span{
+        top: 8vh;
+        font-size: 2vw;
+    }
+
+    /* dpchange */
+
+    .dpchange{
+        position: fixed;
+    }
+
+    .dpchange .card{
+        width: 80vw;
+        height: 20vh;
+        gap: 6vw;
+    }
+
+    .dpchange .card form{
+        gap: 5vw;
+    }
+
+    .dpchange .card p{
+        font-size: 5vw;
+    }
+
+    .closeModel{
+        font-size: 6vw;
+    }
+
+
+    /* save to board */
+
+    .boards-info{
+        top: 14%;
+        left: 38%;
+        width: 65vw;
+        gap: 4vw;
+    }
+
+    .boards-info .search-board{
+        gap: 4vw;
+    }
+
+    .boards-info .search-board p{
+        font-size: 5vw;
+    }
+    .boards-info .search-board input{
+        width: 95%;
+        font-size: 5vw;
+    }
+
+    .boards-info .boards-show{
+        gap: 2vw;
+        font-size: 5vw;
+    }
+
+    .boards-info .boards-show .board-card-info{
+        height: 15vw;
+    }
+
+    .boards-info .boards-show .board-card-info .board-image{
+        height: 10vw;
+        width: 10vw;
+    }
+
+    .boards-info .boards-show .board-card-info p{
+        font-size: 5vw;
+    }
+
+    .boards-info .boards-show .board-card-info .noimage{
+        height: 10vw;
+        width: 10vw;
+    }
+
+}

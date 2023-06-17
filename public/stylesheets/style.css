@@ -145,6 +145,18 @@ body {
   cursor: pointer;
 }
 
+#search-bar-mobile{
+  position: absolute;
+  top: 0;
+  height: 20vh;
+  width: 100vw;
+  background-color: #fff;
+  overflow: hidden;
+  pointer-events: all;
+  z-index: 10000000000;
+  padding: 5vw 2vw;
+}
+
 .menu #search-bar {
   display: flex;
   align-items: center;
@@ -155,7 +167,7 @@ body {
   z-index: 10000000000;
 }
 
-.menu #search-bar form {
+.menu #search-bar form ,#search-bar-mobile form {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -164,7 +176,7 @@ body {
   overflow: hidden;
 }
 
-.menu #search-bar form #searched {
+.menu #search-bar form #searched,#search-bar-mobile form #searched {
   position: absolute;
   right: 0%;
   border: none;
@@ -182,7 +194,7 @@ body {
 
 }
 
-.menu #search-bar .search-bar {
+.menu #search-bar .search-bar ,#search-bar-mobile form .search-bar {
   width: 100%;
   margin: 0px .1vw;
   padding: 1vw 3.25vw;
@@ -202,10 +214,20 @@ body {
   overflow: hidden;
 }
 
+
+
+
 .menu .search-bar:hover {
   background-color: #3333;
 
 }
+
+#search-bar-mobile:hover{
+  background-color: #3333;
+
+}
+
+
 
 .menu .search-bar:focus {
   padding: 1vw 3.25vw;
@@ -715,19 +737,29 @@ font-size: 1.1vw;
 }
 
 #logout:hover {
-  background-color: red;
+  background-color: #b80202;
   color: #fff;
   border: none;
-  border: 1.5px solid red;
 
 }
 
 #logout {
-  background-color: #fff;
-  color: #111;
-  border: 1.5px solid #111;
+  padding: .5vw 1vw;
+  background-color: red;
+  border: none;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 1.2vw;
 }
 
+#search-bar-mobile{
+  display: none;
+}
+
+#search-bar-icon-m{
+  display: none;
+}
 
 
 /*  */
@@ -745,7 +777,6 @@ font-size: 1.1vw;
 .links .active {
   padding: .5vw 0;
   border-bottom: 2px solid black;
-  border-radius: 5px;
 }
 
 .created-con,
@@ -1039,12 +1070,13 @@ input[type="file"]::file-selector-button:hover {
 
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
+  position: fixed;
 }
 
 .add_pin_container {
   padding: 35px;
-  width: 880px;
-  height: 674px;
+  width: 90vw;
+  height: 95vh;
   border-radius: 16px;
   position: absolute;
   top: 50%;
@@ -1052,7 +1084,6 @@ input[type="file"]::file-selector-button:hover {
   transform: translate(-50%, -50%);
   overflow: hidden;
   display: flex;
-
   background-color: #ffffff;
 }
 
@@ -1327,7 +1358,7 @@ max-height: 100%;
   align-items: center;
   justify-content: center;
   z-index: 10000000000000;
-
+position: fixed;
   display: none;
 
 
