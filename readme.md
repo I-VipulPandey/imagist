@@ -1,4 +1,4 @@
-<h1 align="center">Imagist - A Pinterest Clone</h1>
+<h1 align="center">Imagist</h1>
 
 
 <p align="center">
